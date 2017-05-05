@@ -1,4 +1,4 @@
-set term postscript enhanced solid color
+set term postscript enhanced solid color eps
 set output 'histogrammedBootstraps.eps'
 
 set key below

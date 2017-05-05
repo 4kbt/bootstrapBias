@@ -13,6 +13,9 @@ N = 100000; printInteger(N,'NumberOfMeasurements.tex');
 
 %Generate gaussian distribution of t, width t_err
 t = t_0 + randn(N,1) * t_err;
+[ntOne htOne] = hist(t,sqrt(rows(t)));
+O = [htOne' ntOne'];
+save 'timesDistribution.dat' O
 
 %The "measured velocities"
 v = D./t;

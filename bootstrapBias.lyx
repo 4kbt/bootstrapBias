@@ -319,7 +319,64 @@ filename "NumberOfMeasurements.tex"
 \end_inset
 
  iterations of the experiment.
- A histogram of the distribution of measurements is shown in Figure XXXRC.
+ A histogram of the distribution of simulated measurements is shown in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Initial-measurement-distribution"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename initialDistributions.eps
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Initial-measurement-distribution"
+
+\end_inset
+
+Initial measurement distribution, 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+, and the derived (biased and skewed) distribution of velocities 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -331,7 +388,14 @@ distribution
 \begin_inset Quotes erd
 \end_inset
 
- of inferred velocities, shown in Figure XXXRC.
+ of inferred velocities, also shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Initial-measurement-distribution"
+
+\end_inset
+
+.
  As noted regarding Equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -455,7 +519,59 @@ The histograms for the bootstrapped
 \begin_inset Formula $\bar{v}_{v}$
 \end_inset
 
- are 
+ are shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Bootstrapped distributions"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename histogrammedBootstraps.eps
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The difference between the bootstrapped distributions is stark
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Bootstrapped distributions"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -476,6 +592,31 @@ uncorrelated
 non-linear
 \series default
  derived quantities.
+\end_layout
+
+\begin_layout Standard
+We note further that if the clock were perfect and the pitching machine
+ had substantial Gaussian velocity error, the situation would be reversed.
+ Our 
+\begin_inset Quotes eld
+\end_inset
+
+correct
+\begin_inset Quotes erd
+\end_inset
+
+ procedure above would then be biased low.
+ The bootstrap would be equally susceptible.
+ 
+\end_layout
+
+\begin_layout Standard
+It is therefore necessary for the experimenter to keep in mind the correlations,
+ or lack thereof, between the uncertainties in observables and the derived
+ quantities of interest.
+ While it is often convenient to use the bootstrap to bypass careful error
+ propagation, if quantitative accuracy is required, care must be taken to
+ ensure that the bootstrap does not inject a bias into a quantity of interest.
 \end_layout
 
 \end_body
