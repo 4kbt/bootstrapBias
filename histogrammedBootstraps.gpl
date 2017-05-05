@@ -1,0 +1,14 @@
+set term postscript enhanced solid color
+set output 'histogrammedBootstraps.eps'
+
+set key below
+set style fill solid
+
+set xlabel 'velocity (m/s)'
+set ylabel 'number'
+set title 'Comparing distributions of bootstrapped means'
+
+pl\
+	'bootstrappedTimedVelocity.dat' u 1:2 tit 'bootstrapping time' w boxes lt 3,\
+	'bootstrappedDerivedVelocity.dat' u 1:2 tit 'bootstrapping velocity' w boxes
+

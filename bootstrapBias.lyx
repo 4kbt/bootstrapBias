@@ -1,0 +1,482 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Bootstrapping can be biased
+\end_layout
+
+\begin_layout Standard
+Special thanks to Michael Ross for catalyzing this observation.
+ I think Krishna understood it, too, in the context of the Rayleigh-wave
+ work, but it turns out to be a general concern for bootstrapping.
+\end_layout
+
+\begin_layout Section
+A simple experiment
+\end_layout
+
+\begin_layout Standard
+Suppose I want to measure the velocity of baseballs thrown from baseball-pitchin
+g machine.
+ It is a perfect machine; every baseball is pitched at exactly the same
+ velocity.
+ I can do this with two photogates separated by a distance, 
+\begin_inset Formula $D$
+\end_inset
+
+, and a timer.
+ When a baseball passes through the first photogate, the timer starts, and
+ when the baseball passes through the second gate, the timer stops.
+ The time of flight, 
+\begin_inset Formula $t$
+\end_inset
+
+, is then recorded.
+ As with all measurements, we must be cognizant of the statistical measurement
+ uncertainty, 
+\begin_inset Formula $\sigma_{t}$
+\end_inset
+
+.
+ As the baseballs are perfect, 
+\begin_inset Formula $\sigma_{t}$
+\end_inset
+
+ is driven entirely by errors in timing.
+ Assume, for convenience, that the distribution of the timing measurements
+ is Gaussian.
+\end_layout
+
+\begin_layout Subsection
+A right way to go
+\end_layout
+
+\begin_layout Standard
+The quantity of interest is 
+\begin_inset Formula 
+\[
+v=\frac{D}{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One way to perform the experiment is to make 
+\begin_inset Formula $N$
+\end_inset
+
+ measurements of individual 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ to form the mean, 
+\begin_inset Formula $\bar{t}=\sum_{i=1}^{N}t_{i}/N$
+\end_inset
+
+, and the standard deviation of the mean 
+\begin_inset Formula $\sigma_{\bar{t}}=\sqrt{\sum_{i=1}^{N}\frac{(t_{i}-\bar{t})^{2}}{N(N-1)}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We would then estimate the mean velocity to be 
+\begin_inset Formula 
+\[
+\bar{v}=\frac{D}{\bar{t}}
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\sigma_{\bar{v}}=\frac{\partial v}{\partial t}|_{t=\bar{t}}\sigma_{\bar{t}}=\frac{D}{\bar{t}}\sigma_{\bar{t}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This method does not bias 
+\begin_inset Formula $\bar{v}$
+\end_inset
+
+, as if the true value of 
+\begin_inset Formula $v$
+\end_inset
+
+ is 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+, then with enough measurements 
+\begin_inset Formula $\bar{t}$
+\end_inset
+
+ must converge to 
+\begin_inset Formula $t_{0}=\frac{D}{v_{0}}$
+\end_inset
+
+, and 
+\begin_inset Formula $\bar{v}=\frac{D}{t_{0}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Bias appears
+\end_layout
+
+\begin_layout Standard
+If, on the other hand, we attempt to estimate 
+\begin_inset Formula $\bar{v}$
+\end_inset
+
+ via:
+\begin_inset Formula 
+\begin{equation}
+\bar{v}=\frac{1}{N}\sum_{i=1}^{N}\frac{D}{t_{i}}\label{eq:BiasAppears}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+the astute reader may see the problem.
+ The nonlinearity of 
+\begin_inset Formula $1/t_{i}$
+\end_inset
+
+ causes downward fluctuations of 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ to have a larger effect on the mean than upward fluctuations of 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+.
+ This method is biased high.
+\end_layout
+
+\begin_layout Section
+Numerical simulation
+\end_layout
+
+\begin_layout Standard
+I have long argued that the 
+\begin_inset Quotes eld
+\end_inset
+
+best estimator of the distribution from which data are drawn are the data
+ themselves
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is unshaken.
+ However, one cannot, in general, bypass nonlinearities by looking at the
+ distribution of derived quantities, as I have previously argued.
+ There are times where it remains appropriate.
+\end_layout
+
+\begin_layout Subsection
+The distributions
+\end_layout
+
+\begin_layout Standard
+To illustrate this effect, consider our experiment above.
+ Let 
+\begin_inset Formula $D$
+\end_inset
+
+ be 1
+\begin_inset space ~
+\end_inset
+
+m, 
+\begin_inset Formula $v_{0}=10$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+m/s, and 
+\begin_inset Formula $\sigma_{t}=10$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ms.
+ Trivially, 
+\begin_inset Formula $t_{0}=0.1$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+s, so 
+\begin_inset Formula $\sigma_{t}$
+\end_inset
+
+ allows a 10% measurement of 
+\begin_inset Formula $v$
+\end_inset
+
+ with a single baseball.
+\end_layout
+
+\begin_layout Standard
+I simulate 
+\begin_inset CommandInset include
+LatexCommand input
+filename "NumberOfMeasurements.tex"
+
+\end_inset
+
+ iterations of the experiment.
+ A histogram of the distribution of measurements is shown in Figure XXXRC.
+\end_layout
+
+\begin_layout Standard
+With those data in hand, one can easily compute the 
+\begin_inset Quotes eld
+\end_inset
+
+distribution
+\begin_inset Quotes erd
+\end_inset
+
+ of inferred velocities, shown in Figure XXXRC.
+ As noted regarding Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BiasAppears"
+
+\end_inset
+
+, we can easily see the skew of the distribution, which must inevitably
+ pull the mean upward.
+\end_layout
+
+\begin_layout Standard
+We can compute our estimates of 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+ in two different ways, as above.
+ Computing 
+\begin_inset Formula $\bar{v}=\frac{D}{\bar{t}}$
+\end_inset
+
+ yields 
+\begin_inset CommandInset include
+LatexCommand input
+filename "oneShotTimedVelocity.tex"
+
+\end_inset
+
+ and computing 
+\begin_inset Formula $\bar{v}$
+\end_inset
+
+ directly yields 
+\begin_inset CommandInset include
+LatexCommand input
+filename "oneShotFauxVelocity.tex"
+
+\end_inset
+
+, in clear conflict with the true injected 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+ of 
+\begin_inset Formula $10$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+m/s.
+\end_layout
+
+\begin_layout Subsection
+The bootstrap
+\end_layout
+
+\begin_layout Standard
+While the source of the bias is already evident, we now perform a bootstrapped
+ analysis of both the 
+\begin_inset Formula $t_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+ in order to demonstrate the susceptibility of the bootstrap as well.
+ For both variables, we bootstrap 
+\begin_inset CommandInset include
+LatexCommand input
+filename "NumberOfBootstraps.tex"
+
+\end_inset
+
+ times.
+ Computing 
+\begin_inset Formula $\bar{v}_{t}=\frac{D}{\bar{t}}$
+\end_inset
+
+ yields 
+\begin_inset CommandInset include
+LatexCommand input
+filename "bootstrapTimedVelocity.tex"
+
+\end_inset
+
+ and computing 
+\begin_inset Formula $\bar{v}_{v}$
+\end_inset
+
+ directly yields 
+\begin_inset CommandInset include
+LatexCommand input
+filename "bootstrapFauxVelocity.tex"
+
+\end_inset
+
+, also in clear conflict with the true injected 
+\begin_inset Formula $v_{0}$
+\end_inset
+
+ of 
+\begin_inset Formula $10$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+m/s.
+\end_layout
+
+\begin_layout Standard
+The histograms for the bootstrapped 
+\begin_inset Formula $\bar{v}_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{v}_{v}$
+\end_inset
+
+ are 
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+The bootstrap 
+\series bold
+is not
+\series default
+ immune to biases introduced by 
+\series bold
+uncorrelated
+\series default
+ measurement error when computing 
+\series bold
+non-linear
+\series default
+ derived quantities.
+\end_layout
+
+\end_body
+\end_document
