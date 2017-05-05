@@ -4,8 +4,13 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass amsart
 \use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -27,6 +32,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing onehalf
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -77,7 +83,8 @@ Bootstrapping can be biased
 \begin_layout Standard
 Special thanks to Michael Ross for catalyzing this observation.
  I think Krishna understood it, too, in the context of the Rayleigh-wave
- work, but it turns out to be a general concern for bootstrapping.
+ work.
+ It is a general concern for bootstrapping.
 \end_layout
 
 \begin_layout Section
@@ -194,7 +201,7 @@ This method does not bias
 \end_inset
 
 , and 
-\begin_inset Formula $\bar{v}=\frac{D}{t_{0}}$
+\begin_inset Formula $\bar{v}=\frac{D}{t_{0}}=v_{0}$
 \end_inset
 
 .
@@ -539,7 +546,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename histogrammedBootstraps.eps
-	width 80page%
+	width 80text%
 
 \end_inset
 
@@ -550,7 +557,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The difference between the bootstrapped distributions is stark
+The difference between the bootstrapped distributions is stark.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Bootstrapped distributions"
