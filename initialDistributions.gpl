@@ -2,6 +2,7 @@ set term postscript enhanced solid color eps
 set output 'initialDistributions.eps'
 
 set style fill solid
+set key noauto
 
 set multiplot layout 2,1
 set ylabel 'number'
@@ -15,6 +16,5 @@ set xlabel 'velocity (m/s)'
 
 set title 'Naive velocity distribution (v_i = D / t_i)'
 
-set key noauto
 pl\
 	'fauxVelocityDistribution.dat' u 1:2 w boxes lt 3
