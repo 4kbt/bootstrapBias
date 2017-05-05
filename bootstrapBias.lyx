@@ -89,6 +89,8 @@ Special thanks to Michael Ross for catalyzing this observation.
  I think Krishna Venkateswara understood it, too, in the context of the
  Rayleigh-wave work.
  It is a general concern for bootstrapping.
+ This document is generated with one 'make' command from code available
+ at https://github.com/4kbt/bootstrapBias
 \end_layout
 
 \begin_layout Section
