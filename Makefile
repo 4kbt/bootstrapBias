@@ -7,5 +7,5 @@ initialDistributions.eps: initialDistributions.gpl fauxVelocityDistribution.dat 
 histogrammedBootstraps.eps: histogrammedBootstraps.gpl bootstrappedDerivedVelocity.dat bootstrappedTimedVelocity.dat
 	gnuplot $< 
 
-fauxVelocityDistribution.dat timesDistribution.dat bootstrappedDerivedVelocity.dat bootstrappedTimedVelocity.dat: bootstrapBias.m *.m
-	octave $<
+fauxVelocityDistribution.dat timesDistribution.dat bootstrappedDerivedVelocity.dat bootstrappedTimedVelocity.dat: bootstrapBias.m *.m Makefile
+	octave --no-init-file --norc --path ./lib/ $<

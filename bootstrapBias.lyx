@@ -80,10 +80,14 @@ figs-within-sections
 Bootstrapping can be biased
 \end_layout
 
+\begin_layout Author
+Charlie Hagedorn (University of Washington / CENPA, cah49@uw.edu)
+\end_layout
+
 \begin_layout Standard
 Special thanks to Michael Ross for catalyzing this observation.
- I think Krishna understood it, too, in the context of the Rayleigh-wave
- work.
+ I think Krishna Venkateswara understood it, too, in the context of the
+ Rayleigh-wave work.
  It is a general concern for bootstrapping.
 \end_layout
 
